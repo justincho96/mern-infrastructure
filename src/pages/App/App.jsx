@@ -9,7 +9,7 @@ import OrderHistoryPage from "../OrderHistory/OrderHistoryPage";
 
 export default function App() {
   // i'm intentionally leaving this empty (null)
-  const [user, setUser] = useState("lalapalooza");
+  const [user, setUser] = useState(null);
   return (
     <main className="App">
       App
