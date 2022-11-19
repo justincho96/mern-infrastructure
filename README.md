@@ -4,6 +4,7 @@
 - run `npm run build` to make build folder
 - create `.env` file
   - DATABASE_URL=mongodb://localhost/sei-cafe
+  - SECRET=whatever
 - start both parts of stack with these commands:
 
   - `nodemon server` for express.js
