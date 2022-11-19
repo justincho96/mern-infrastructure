@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { signUp } from "../../utilities/users-service";
 
 export default class SignUpForm extends Component {
   // state for SignUpForm
@@ -17,10 +18,32 @@ export default class SignUpForm extends Component {
     });
   };
 
-  handleSubmit = (evt) => {
+  handleSubmit = async (evt) => {
     // prevent page from reloading
     evt.preventDefault();
-    alert(JSON.stringify(this.state));
+    try {
+      // we don't need to send 'error' or 'confirm' properties in state
+      // make copy of state object with only necessary fields
+      const formData = { ...this.state };
+      delete formData.error;
+      delete formData.confirm;
+
+      // Promise returned by signUp service method
+      // will resolve to the user object included in
+      // payload of JSON Web Token (JWT)
+      const user = await signUp(formData);
+      console.log(user);
+
+      // without delete keyword
+      // const formData = {
+      //   name: this.state.name,
+      //   email: this.state.email,
+      //   password: this.state.password,
+      // };
+    } catch {
+      // an error occured
+      this.setState({ error: "Sign Up Failed - Try Again" });
+    }
   };
 
   render() {

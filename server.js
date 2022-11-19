@@ -19,6 +19,7 @@ app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "build")));
 
 // Put API Routes here, before the "catch all" route
+app.use("/api/users", require("./routes/api/users"));
 
 // the following "catch all" route (note the *) is necessary
 app.get("/*", function (req, res) {
