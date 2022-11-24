@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { getUser } from "../../utilities/users-service";
 import "./App.css";
 
 import AuthPage from "../AuthPage/AuthPage";
@@ -9,7 +10,7 @@ import OrderHistoryPage from "../OrderHistory/OrderHistoryPage";
 
 export default function App() {
   // i'm intentionally leaving this empty (null)
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(getUser());
   return (
     <main className="App">
       App
